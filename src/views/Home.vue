@@ -14,7 +14,7 @@ const step = ref(0)
 const results = ref([])
 
 const handleNext = (form) => {
-  if (step.value == 5) {
+  if (step.value == 4) {
     submit()
     return
   }
