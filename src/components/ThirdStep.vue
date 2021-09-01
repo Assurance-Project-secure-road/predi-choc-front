@@ -35,7 +35,7 @@
                     <label
                         for="surface"
                         class="form-label"
-                    >Sur quelle surface vous avez l’habitude de conduire ?</label>
+                    >Sur quelle surface avez-vous l’habitude de conduire ?</label>
                     <div
                         class="form-check form-switch"
                         v-for="(surface, i) in surfaces"
@@ -93,7 +93,7 @@
                 <label
                     for="age"
                     class="form-label"
-                >Dans quelle condition lumiseuse avez vous l'habite de conduire ?</label>
+                >Dans quelle condition lumiseuse avez vous l'habitude de conduire ?</label>
                 <select id="lights" class="form-select" v-model="light">
                     <option disabled value>Etat de luminosité</option>
                     <option value="1">Plein jour</option>
