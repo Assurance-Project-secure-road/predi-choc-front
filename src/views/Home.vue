@@ -2,6 +2,7 @@
   <div class="container">
     <FirstStep :step="step+1" @next="handleNext" v-if="step == 0" />
     <SecondStep :step="step+1" @next="handleNext" v-else-if="step ==1" />
+    <ThirdStep :step="step+1" @next="handleNext" v-else-if="step == 2" />
     <FourthStep :step="step+1" @next="handleNext" v-else-if="step ==3" />
     <Result :results="results" v-if="results.length > 0" />
   </div>
@@ -11,6 +12,7 @@
 import { ref } from "vue"
 import FirstStep from "@/components/FirstStep.vue"
 import SecondStep from "@/components/SecondStep.vue"
+import ThirdStep from "@/components/ThirdStep.vue"
 import FourthStep from "@/components/FourthStep.vue"
 import Result from "@/components/Result.vue"
 const sondage = ref({})
