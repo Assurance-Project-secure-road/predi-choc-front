@@ -32,7 +32,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="age" class="form-label">Utilisez vous les équipements de protection ?</label>
+                <label for="age" class="form-label">Utilisez-vous les équipements de protection ?</label>
 
                 <select class="form-select" aria-label="Default select example">
                     <option disabled>Choix des équipements</option>
