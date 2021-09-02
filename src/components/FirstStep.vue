@@ -52,7 +52,8 @@
             
 
             <div class="mb-3 text-right">
-                <button @click="handleNext">Suivant</button>
+
+                <button type="button" class="btn btn-primary" @click="handleNext">Suivant</button>
             </div>
         </div>
     </div>

@@ -51,7 +51,8 @@
             </div>
         </div>
          <div class="mb-3 text-right">
-            <button @click="handleNext">Envoyer</button>
+
+            <button  type="button" class="btn btn-success" @click="handleNext">Envoyer</button>
         </div>
     </div>
 </div>
