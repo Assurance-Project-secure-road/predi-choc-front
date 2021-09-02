@@ -107,9 +107,9 @@ defineProps({
 const equipementUsager = ref("")
 const catVehicule = ref("")
 const typeMotorVeh = ref(0)
-const CategoryRoute = ref()
+const CategoryRoute = ref(0)
 
 const handleNext = () => {
-    emits("next", { equipementUsager: parseInt(equipementUsager.value), catVehicule: parseInt(catVehicule.value), typeMotorVeh: typeMotorVeh.value })
+    emits("next", { equipementUsager: parseInt(equipementUsager.value), catVehicule: parseInt(catVehicule.value), typeMotorVeh: typeMotorVeh.value, CategoryRoute: parseInt(CategoryRoute.value) })
 }
 </script>
