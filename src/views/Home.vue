@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <StepExemple :step="step+1" @next="handleNext" v-if="step == 0" />
+    <FirstStep :step="step+1" @next="handleNext" v-if="step == 0" />
     <SecondStep :step="step+1" @next="handleNext" v-else-if="step ==1" />
     <FourthStep :step="step+1" @next="handleNext" v-else-if="step ==3" />
     <Result :results="results" v-if="results.length > 0" />
@@ -9,7 +9,7 @@
 
 <script setup>
 import { ref } from "vue"
-import StepExemple from "@/components/StepExemple.vue"
+import FirstStep from "@/components/FirstStep.vue"
 import SecondStep from "@/components/SecondStep.vue"
 import FourthStep from "@/components/FourthStep.vue"
 import Result from "@/components/Result.vue"
