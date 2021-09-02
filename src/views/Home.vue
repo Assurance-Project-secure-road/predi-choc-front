@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <StepExemple :step="step+1" @next="handleNext" v-if="step == 0" />
-    <ThirdStep :step="step+1" @next="handleNext" v-else-if="step == 1" />
+    <ThirdStep :step="step+1" @next="handleNext" v-else-if="step == 2" />
     <Result :results="results" v-if="results.length > 0" />
   </div>
 </template>
