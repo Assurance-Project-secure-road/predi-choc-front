@@ -26,7 +26,7 @@
                     id="nb_voie_route"
                     min="1"
                     max="12"
-                    placeholder="Age"
+                    placeholder="Nombre de voies"
                     v-model="nbVoieRoute"
                 />
             </div>
