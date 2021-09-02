@@ -1,13 +1,13 @@
 <template>
   <div class="container">
-    <StepExemple :step="step+1" @next="handleNext" v-if="step < 5" />
+    <FirstStep :step="step+1" @next="handleNext" v-if="step < 5" />
     <Result :results="results" v-if="results.length > 0" />
   </div>
 </template>
 
 <script setup>
 import { ref } from "vue"
-import StepExemple from "@/components/StepExemple.vue"
+import FirstStep from "@/components/FirstStep.vue"
 import Result from "@/components/Result.vue"
 const sondage = ref({})
 const step = ref(0)
