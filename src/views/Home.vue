@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <FirstStep :step="step+1" @next="handleNext" v-if="step < 5" />
+    <FirstStep :step="step==0" @next="handleNext" v-if="step < 5" />
     <Result :results="results" v-if="results.length > 0" />
   </div>
 </template>

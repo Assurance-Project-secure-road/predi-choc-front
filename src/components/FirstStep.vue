@@ -4,12 +4,12 @@
             <h2>Etape {{ step }}</h2>
 
             <div class="mb-3">
-                <label for="age" class="form-label">Quel est votre sexe ?</label>
+                <label for="age" class="form-label">Quel est votre genre ?</label>
 
                 <select class="form-select" aria-label="Default select example">
-                    <option disabled>Choix sexe</option>
-                    <option value="1">1 - Homme</option>
-                    <option value="2">2 - Femme</option>
+                    <option disabled>Choix du genre</option>
+                    <option value="1">Homme</option>
+                    <option value="2">Femme</option>
                 </select>
             </div>
 
@@ -19,10 +19,10 @@
             </div>
 
             <div class="mb-3">
-                <label for="age" class="form-label">Selectionnez votre département</label>
+                <label for="age" class="form-label">Selectionner votre département</label>
 
                 <select class="form-select" aria-label="Default select example">
-                    <option disabled>Liste de département</option>
+                    <option disabled>Liste de départements</option>
                     <option
                         :value="dpt.departmentCode"
                         v-for="dpt in departement"
@@ -32,7 +32,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="age" class="form-label">Utilisez- vous les équipements de protection ?</label>
+                <label for="age" class="form-label">Utilisez vous les équipements de protection ?</label>
 
                 <select class="form-select" aria-label="Default select example">
                     <option disabled>Choix des équipements</option>
