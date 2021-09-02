@@ -5,7 +5,7 @@
         <div class="mb-3">
             <label for="equipement" class="form-label">Quels équipements de sécurité utilisez vous systématiquement?</label>
             <select class="form-select" aria-label="Default" id="equipement" v-model="equipementUsager">
-                <option selected value="0">Choisissez-vous un équipement dans la liste</option>
+                <option disabled value="">Choisissez-vous un équipement dans la liste</option>
                 <option value="1">Ceinture</option>
                 <option value="2">Casque</option>
                 <option value="3">Dispositif enfants</option>
@@ -20,7 +20,7 @@
         <div class="mb-3">
             <label for="cat_vahicule" class="form-label">Quel véhicule avez-vous ?</label>
              <select class="form-select" aria-label="Default" id="cat_veh" v-model="catVehicule">
-                <option selected value="">Choisissez-vous un véhicule </option>
+                <option disabled value="">Choisissez-vous un véhicule </option>
                 <option value="0">Indéterminable</option>
                 <option value="1">Bicyclette</option>
                 <option value="2">Cyclomoteur &lt; 50cm3</option>
@@ -106,10 +106,14 @@ defineProps({
 
 const equipementUsager = ref("")
 const catVehicule = ref("")
-const typeMotorVeh = ref(0)
-const CategoryRoute = ref(0)
+const typeMotorVeh = ref("")
+const CategoryRoute = ref("")
 
 const handleNext = () => {
-    emits("next", { equipementUsager: parseInt(equipementUsager.value), catVehicule: parseInt(catVehicule.value), typeMotorVeh: typeMotorVeh.value, CategoryRoute: parseInt(CategoryRoute.value) })
+    emits("next", { 
+        equipementUsager: parseInt(equipementUsager.value), 
+        catVehicule: parseInt(catVehicule.value), 
+        typeMotorVeh: parseInt(typeMotorVeh.value), 
+        CategoryRoute: parseInt(CategoryRoute.value) })
 }
 </script>
