@@ -51,7 +51,7 @@
             </div>
         </div>
          <div class="mb-3 text-right">
-            <button @click="handleNext">Envoyer</button>
+            <button @click="handleNext">Suivant</button>
         </div>
     </div>
 </div>
@@ -92,12 +92,15 @@ const light =  ref("")
 const meteoSelected = ref([])
 const motifDeplace = ref("")
 const departementSelected =  ref([])
+const buttonDisabled = ref(false)
 
 const checkForm = () => light.value !== "" && meteoSelected.value.length > 0 && motifDeplace.value !== "" && departementSelected.value !== ""
 
 const handleNext = () => {
+    buttonDisabled.value = true
     if (!checkForm()) {
         createToast({title: "Veuillez remplir tout le formulaire !"} , { type: "danger" })
+        buttonDisabled.value = false
         return
     }
     emits("next", { 

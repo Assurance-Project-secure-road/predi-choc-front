@@ -3,7 +3,8 @@
     <FirstStep :step="step+1" @next="handleNext" v-if="step == 0" />
     <SecondStep :step="step+1" @next="handleNext" v-else-if="step ==1" />
     <ThirdStep :step="step+1" @next="handleNext" v-else-if="step == 2" />
-    <FourthStep :step="step+1" @next="handleNext" v-else-if="step ==3" />
+    <FourthStep :step="step+1" @next="handleNext" v-else-if="step == 3" />
+    <AskResult :step="step+1" :disabled="loading" @submit="handleSubmit" v-else-if="step == 4" />
     <Result :results="results" :sondage="sondage" v-if="results.length > 0" />
   </div>
 </template>
@@ -14,10 +15,20 @@ import FirstStep from "@/components/FirstStep.vue"
 import SecondStep from "@/components/SecondStep.vue"
 import ThirdStep from "@/components/ThirdStep.vue"
 import FourthStep from "@/components/FourthStep.vue"
+import AskResult from "@/components/AskResult.vue"
 import Result from "@/components/Result.vue"
+import { createToast } from "mosha-vue-toastify"
 const sondage = ref({})
 const step = ref(0)
 const results = ref([])
+const loading = ref(false)
+
+const handleSubmit = () => {
+  if (step.value == 4) {
+    loading.value = true
+    submit()
+  }
+}
 
 const handleNext = (form) => {
   if (sondage.value["Categorie_Vehicule"] !== undefined && form["Categorie_Vehicule"] !== undefined) {
@@ -25,22 +36,18 @@ const handleNext = (form) => {
       sondage.value["Categorie_Vehicule"] = [sondage.value["Categorie_Vehicule"]]
     if (!Array.isArray(form["Categorie_Vehicule"]))
       form["Categorie_Vehicule"] = [form["Categorie_Vehicule"]]
-    sondage.value["Categorie_Vehicule"] = [...sondage.value["Categorie_Vehicule"], ...form["Categorie_Vehicule"]]
-    delete form["Categorie_Vehicule"]
-  }
-  if (sondage.value["Departement_Acc"] !== undefined && form["Departement_Acc"] !== undefined) {
-    if (!Array.isArray(sondage.value["Departement_Acc"]))
-      sondage.value["Departement_Acc"] = [sondage.value["Departement_Acc"]]
-    if (!Array.isArray(form["Departement_Acc"]))
-      form["Departement_Acc"] = [form["Departement_Acc"]]
-    sondage.value["Departement_Acc"] = [...sondage.value["Departement_Acc"], ...form["Departement_Acc"]]
-    delete form["Departement_Acc"]
-  }
-  sondage.value = Object.assign({}, sondage.value, form)
-  if (step.value == 3) {
-    submit()
-    return
-  }
+      sondage.value["Categorie_Vehicule"] = [...sondage.value["Categorie_Vehicule"], ...form["Categorie_Vehicule"]]
+      delete form["Categorie_Vehicule"]
+    }
+    if (sondage.value["Departement_Acc"] !== undefined && form["Departement_Acc"] !== undefined) {
+      if (!Array.isArray(sondage.value["Departement_Acc"]))
+        sondage.value["Departement_Acc"] = [sondage.value["Departement_Acc"]]
+      if (!Array.isArray(form["Departement_Acc"]))
+        form["Departement_Acc"] = [form["Departement_Acc"]]
+      sondage.value["Departement_Acc"] = [...sondage.value["Departement_Acc"], ...form["Departement_Acc"]]
+      delete form["Departement_Acc"]
+    }
+    sondage.value = Object.assign({}, sondage.value, form)
   step.value += 1
 }
 
@@ -52,10 +59,12 @@ const submit = async () => {
     })
     if (result.status == 200) {
       results.value = result.data
+      step.value += 1
     }
   } catch {
-    console.warn("error")
+    createToast({ title: "Erreur avec votre connexion internet" }, { type: "danger"})
   }
+  loading.value = false
 }
 
 const getSondageList = () => {
