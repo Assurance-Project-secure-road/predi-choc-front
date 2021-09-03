@@ -1,10 +1,14 @@
 <template>
-<h1 class="not-found">404</h1>
-<h3>OOPS !</h3>
-<p class="text-secondary">
-La page n'existe pas ou a été déplacée...
-</p>
-<a href="/" class="btn-grad">Retour à l'accueil</a>
+<div class="container text-center">
+    <h1 class="not-found">404</h1>
+    <h3 class="text-secondary">OOPS !</h3>
+    <p class="text-secondary mb-3">
+    La page n'existe pas ou a été déplacée...
+    </p>
+    <div class="mt-3">
+        <a href="/" class="btn-grad">Retour à l'accueil</a>
+    </div>
+</div>
 </template>
 <style type="text/css">
 h1.not-found {
@@ -17,6 +21,7 @@ h1.not-found {
 
 
 a.btn-grad {
+    display: inline-block;
   text-decoration: none;
   background-image: linear-gradient(to right, #DA22FF 0%, #9733EE 51%, #DA22FF 100%);
   margin: 10px;
@@ -28,7 +33,6 @@ a.btn-grad {
   color: white;
   box-shadow: 0 0 20px #eee;
   border-radius: 10px;
-  display: block;
 }
 
 .btn-grad:hover {

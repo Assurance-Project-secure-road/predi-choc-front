@@ -8,7 +8,7 @@ const routes = [
     name: "Home",
     component: Home,
   },
-  { path: "*", component: PageNotFound }
+  { path: "/:pathMatch(.*)*", component: PageNotFound }
 ];
 
 const router = createRouter({

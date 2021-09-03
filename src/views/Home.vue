@@ -46,7 +46,7 @@ const handleNext = (form) => {
 
 const submit = async () => {
   try {
-    const result = await fetch("http://127.0.0.1:5000/api/sondage", { 
+    const result = await fetch("/api/sondage", { 
       method: "post",
       body: JSON.stringify(getSondageList())
     })
