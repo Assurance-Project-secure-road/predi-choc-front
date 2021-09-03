@@ -98,13 +98,15 @@
 
 <script setup>
 import { ref, defineEmits, defineProps } from "vue"
+import { createToast } from 'mosha-vue-toastify'
+import 'mosha-vue-toastify/dist/style.css'
 const emits = defineEmits(["next"])
 defineProps({
     step: Number
 })
 
-const nbVoieRoute = ref(1)
-const regimeCirculation = ref(NaN)
+const nbVoieRoute = ref("")
+const regimeCirculation = ref("")
 const selectedSurfaces = ref([])
 const selectedMonths = ref([])
 const selectedCars = ref([])
@@ -154,7 +156,13 @@ const typeCars = [
     "99 – Autre véhicule",
 ]
 
+const checkForm = () => nbVoieRoute.value !== "" && regimeCirculation.value !== "" && selectedSurfaces.value.length > 0 && selectedMonths.value.length > 0 && selectedCars.value.length > 0
+
 const handleNext = () => {
-    emits("next", { Nb_voie_Route: nbVoieRoute.value, Categorie_Route: regimeCirculation.value, selectedSurfaces: selectedSurfaces.value, selectedMonths: selectedMonths.value, selectedCars: selectedCars.value })
+    if (!checkForm()) {
+        createToast({title: "Veuillez remplir tout le formulaire !"} , { type: "danger" })
+        return
+    }
+    emits("next", { "Nb_voie_Route": parseInt(nbVoieRoute.value), "Circulation_Route": parseInt(regimeCirculation.value), "Surface_Route": selectedSurfaces.value, "Month": selectedMonths.value, "Categorie_Vehicule": selectedCars.value })
 }
 </script>

@@ -2,18 +2,22 @@
 <h1>Bravo !</h1>
 <h3>Vos résultats</h3>
 <p>Selon les informations soumises, il est plus probable que vous soyez '<strong>{{ getGravite(getMostProbable.gravite) }}</strong>' par un accident '<strong>{{ getType(getMostProbable.type) }}</strong>'.</p>
+
 </template>
 
 <script setup>
-import { computed } from "vue"
-defineProps({
+import { computed, defineProps, toRefs } from "vue"
+const props = defineProps({
     results: Object,
+    sondage: Object,
 })
+
+const {results} = toRefs(props)
 
 const getMostProbable = computed(() => {
     let sumOfGrav = {}
     let sumOfType = {}
-    for (let result of results) {
+    for (let result of results.value) {
         result.gravite.forEach((gravite, value) => {
             sumOfGrav[gravite] += value
 

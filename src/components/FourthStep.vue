@@ -60,7 +60,9 @@
 
 <script setup>
 import { ref, defineEmits, defineProps } from "vue"
+import { createToast } from 'mosha-vue-toastify'
 import departement from "@/assets/departments_FR.json"
+import 'mosha-vue-toastify/dist/style.css'
 const emits = defineEmits(["next"])
 defineProps({
     step: Number
@@ -91,12 +93,17 @@ const meteoSelected = ref([])
 const motifDeplace = ref("")
 const departementSelected =  ref([])
 
+const checkForm = () => light.value !== "" && meteoSelected.value.length > 0 && motifDeplace.value !== "" && departementSelected.value !== ""
 
 const handleNext = () => {
+    if (!checkForm()) {
+        createToast({title: "Veuillez remplir tout le formulaire !"} , { type: "danger" })
+        return
+    }
     emits("next", { 
-        light: light.value, 
-        meteoSelected: meteoSelected.value, 
-        motifDeplace: parseInt(motifDeplace.value), 
-        departementSelected: departementSelected.value })
+        "Lumiere_Acc": light.value, 
+        "Meteo_Acc": meteoSelected.value, 
+        "Motif_Deplacer_Usager": parseInt(motifDeplace.value), 
+        "Departement_Acc": departementSelected.value })
 }
 </script>
