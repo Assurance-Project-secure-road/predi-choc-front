@@ -53,13 +53,19 @@ const handleNext = (form) => {
 
 const submit = async () => {
   try {
-    const result = await fetch("/api/sondage", { 
+    const resp = await fetch("/api/sondage", { 
       method: "post",
-      body: JSON.stringify(getSondageList())
+      body: JSON.stringify(getSondageList()),
+      headers: new Headers({ 'Content-Type': 'application/json' })
     })
-    if (result.status == 200) {
-      results.value = result.data
-      step.value += 1
+    if (resp.status == 200) {
+      const result = await resp.json()
+      if (result.ok) {
+        results.value = result.data
+        step.value += 1
+      } else {
+        createToast({ title: "Erreur lors de l'envoi du formulaire !" }, { type: "danger" })
+      }
     }
   } catch {
     createToast({ title: "Erreur avec votre connexion internet" }, { type: "danger"})

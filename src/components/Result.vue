@@ -1,7 +1,7 @@
 <template>
 <h1>Bravo !</h1>
 <h3>Vos résultats</h3>
-<p>Selon les informations soumises, il est plus probable que vous soyez '<strong>{{ getGravite(getMostProbable.gravite) }}</strong>' par un accident '<strong>{{ getType(getMostProbable.type) }}</strong>'.</p>
+<p>Selon les informations soumises, il est plus probable que vous soyez '<strong>{{ getGravite(getMostProbable.gravite[0][0]) }}</strong>' par un accident '<strong>{{ getType(getMostProbable.type[0][0]) }}</strong>'.</p>
 
 </template>
 
@@ -18,21 +18,28 @@ const getMostProbable = computed(() => {
     let sumOfGrav = {}
     let sumOfType = {}
     for (let result of results.value) {
-        result.gravite.forEach((gravite, value) => {
-            sumOfGrav[gravite] += value
-
+        Object.keys(result.gravite).forEach((gravite) => {
+            if (sumOfGrav[gravite] !== undefined) {
+                sumOfGrav[gravite] += result.gravite[gravite]
+            } else {
+                sumOfGrav[gravite] = result.gravite[gravite]
+            }
         })
-        result.type.forEach((type, value) => {
-            sumOfType[type] += value
+        Object.keys(result.type).forEach((type) => {
+            if (sumOfType[type] !== undefined) {
+                sumOfType[type] += result.type[type]
+            } else {
+                sumOfType[type] = result.type[type]
+            }
         })
     }
-    const gravSorted = Object.fromEntries(Object.entries(sumOfGrav).sort(([,a],[,b]) => a-b))
-    const gravType = Object.fromEntries(Object.entries(sumOfType).sort(([,a],[,b]) => a-b))
+    const gravSorted = Object.entries(sumOfGrav).sort(([,a],[,b]) => b-a)
+    const gravType = Object.entries(sumOfType).sort(([,a],[,b]) => b-a)
     return { gravite: gravSorted, type: gravType }
 })
 
 const getGravite = (gravite) => {
-    switch (gravite) {
+    switch (parseInt(gravite)) {
         case 1:
             return "Indemne"
         case 2:
@@ -46,7 +53,7 @@ const getGravite = (gravite) => {
 }
 
 const getType = (type) => {
-    switch (type) {
+    switch (parseInt(type)) {
         case 1:
             return "Deux véhicules - frontale"
         case 2:
