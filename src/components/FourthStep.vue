@@ -42,8 +42,8 @@
                 Avez vous l'habitude de voyager dans d'autres departement ?
             </label>
             <div class="row">
-                <div class="form-check col-2" v-for="(dpt, i) in departement" :key="'departement_'+i">
-                    <input class="form-check-input" type="checkbox" :value="i+1" :id="'departement_' + i" v-model="departementSelected">
+                <div class="form-check col-12 col-md-3" v-for="(dpt, i) in departement" :key="'departement_'+i">
+                    <input class="form-check-input" type="checkbox" :value="dpt.departmentCode.replace(/^0*/, '')" :id="'departement_' + i" v-model="departementSelected">
                     <label class="form-check-label" :for="'departement_' + i">
                         {{ dpt.departmentName }}
                     </label>
@@ -104,7 +104,7 @@ const handleNext = () => {
         return
     }
     emits("next", { 
-        "Lumiere_Acc": light.value, 
+        "Lumiere_Acc": parseInt(light.value), 
         "Meteo_Acc": meteoSelected.value, 
         "Motif_Deplacer_Usager": parseInt(motifDeplace.value), 
         "Departement_Acc": departementSelected.value })

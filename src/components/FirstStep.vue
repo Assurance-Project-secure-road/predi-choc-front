@@ -24,9 +24,9 @@
                 <select class="form-select" id="departement" v-model="departement">
                     <option disabled value="">Liste de départements</option>
                     <option
-                        :value="dpt.departmentCode"
+                        :value="dpt.departmentCode.replace(/^0*/, '')"
                         v-for="dpt in departements"
-                        :key="dpt.departmentCode"
+                        :key="'dpt_'+dpt.departmentCode"
                     >{{ dpt.departmentCode }} - {{ dpt.departmentName }}</option>
                 </select>
             </div>
