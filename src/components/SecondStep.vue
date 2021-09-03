@@ -3,21 +3,6 @@
     <div class="card-body">
         <h2>Etape {{ step }}</h2>
         <div class="mb-3">
-            <label for="equipement" class="form-label">Quels équipements de sécurité utilisez vous systématiquement?</label>
-            <select class="form-select" aria-label="Default" id="equipement" v-model="equipementUsager">
-                <option disabled value="">Choisissez-vous un équipement dans la liste</option>
-                <option value="1">Ceinture</option>
-                <option value="2">Casque</option>
-                <option value="3">Dispositif enfants</option>
-                <option value="4">Gilet réfléchissant</option>
-                <option value="5">Airbag (2RM/3RM)</option>
-                <option value="6">Gants (2RM/3RM)</option>
-                <option value="7">Gants + Airbag (2RM/3RM)</option>
-                <option value="8">Non déterminable</option>
-                <option value="9">Autre</option>
-            </select>
-        </div>
-        <div class="mb-3">
             <label for="cat_vahicule" class="form-label">Quel véhicule avez-vous ?</label>
              <select class="form-select" aria-label="Default" id="cat_veh" v-model="catVehicule">
                 <option disabled value="">Choisissez-vous un véhicule </option>
@@ -99,21 +84,27 @@
 
 <script setup>
 import { ref, defineEmits, defineProps } from "vue"
+import { createToast } from 'mosha-vue-toastify'
+import 'mosha-vue-toastify/dist/style.css'
 const emits = defineEmits(["next"])
 defineProps({
     step: Number
 })
 
-const equipementUsager = ref("")
 const catVehicule = ref("")
 const typeMotorVeh = ref("")
 const CategoryRoute = ref("")
 
+const checkForm = () => catVehicule.value !== "" && typeMotorVeh.value !== "" && CategoryRoute.value !== ""
+
 const handleNext = () => {
+    if (!checkForm()) {
+        createToast({title: "Veuillez remplir tout le formulaire !"} , { type: "danger" })
+        return
+    }
     emits("next", { 
-        equipementUsager: parseInt(equipementUsager.value), 
-        catVehicule: parseInt(catVehicule.value), 
-        typeMotorVeh: parseInt(typeMotorVeh.value), 
-        CategoryRoute: parseInt(CategoryRoute.value) })
+        "Categorie_Vehicule": parseInt(catVehicule.value), 
+        "Type_motorisation_Vehicule": parseInt(typeMotorVeh.value), 
+        "Categorie_Route": parseInt(CategoryRoute.value) })
 }
 </script>
