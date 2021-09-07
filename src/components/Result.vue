@@ -1,8 +1,9 @@
 <template>
-<h1>Bravo !</h1>
-<h3>Vos résultats</h3>
+<div class="card shadow">
+<h1 class="card-title text-primary">Bravo !</h1>
+<h3 class="text-primary">Vos résultats</h3>
 <p>Selon les informations soumises, il est plus probable que vous soyez '<strong>{{ getGravite(getMostProbable.gravite[0][0]) }}</strong>' par un accident '<strong>{{ getType(getMostProbable.type[0][0]) }}</strong>'.</p>
-
+</div>
 </template>
 
 <script setup>

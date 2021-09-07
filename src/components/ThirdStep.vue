@@ -1,7 +1,7 @@
 <template>
     <div class="card">
         <div class="card-body">
-            <h2>Etape {{ step }}</h2>
+            <h1 class="card-title text-primary">Etape {{ step }}</h1>
             <div class="mb-3">
                 <label
                     for="regime_circulation"
@@ -89,8 +89,8 @@
                     <label class="form-check-label" :for="'type_' + i">{{ typeCar }}</label>
                 </div>
             </div>
-            <div class="mb-3 text-right">
-                <button @click="handleNext">Suivant</button>
+            <div class="mb-3 text-end">
+                <button @click="handleNext" class="btn btn-primary">Suivant</button>
             </div>
         </div>
     </div>
@@ -160,7 +160,7 @@ const checkForm = () => nbVoieRoute.value !== "" && regimeCirculation.value !== 
 
 const handleNext = () => {
     if (!checkForm()) {
-        createToast({title: "Veuillez remplir tout le formulaire !"} , { type: "danger" })
+        createToast({ title: "Veuillez remplir tout le formulaire !" }, { type: "danger" })
         return
     }
     emits("next", { "Nb_voie_Route": parseInt(nbVoieRoute.value), "Circulation_Route": parseInt(regimeCirculation.value), "Surface_Route": selectedSurfaces.value, "Month": selectedMonths.value, "Categorie_Vehicule": selectedCars.value })

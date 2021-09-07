@@ -1,7 +1,7 @@
 <template>
     <div class="card">
         <div class="card-body">
-            <h2>Etape {{ step }}</h2>
+            <h1 class="card-title text-primary">Etape {{ step }}</h1>
 
             <div class="mb-3">
                 <label for="genre" class="form-label">Quel est votre genre ?</label>
@@ -57,8 +57,8 @@
                     <option value="80">Montagne</option>
                 </select>
             </div>
-            <div class="mb-3 text-right">
-                <button @click="handleNext">Suivant</button>
+            <div class="mb-3 text-end">
+                <button @click="handleNext" class="btn btn-primary">Suivant</button>
             </div>
         </div>
     </div>

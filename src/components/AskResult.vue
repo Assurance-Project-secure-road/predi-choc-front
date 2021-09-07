@@ -1,10 +1,10 @@
 <template>
-<div class="card">
+<div class="card bg-primary text-white">
     <div class="card-body">
-        <h1>Informations</h1>
+        <h1 class="card-title">Informations</h1>
         <p>Les données que vous allez soumettre ne seront pas stockées dans notre base de données mais seront traîtées par nos algorithmes d'intelligence artificielle afin de pouvoir vous donner une réponse.</p>
         <p>En cliquant sur le bouton <em>Envoyer</em>, vous acceptez ces conditions d'utilisation.</p>
-        <button class="btn btn-success" @click.prevent="handleSubmit" :disabled="isButtonDisabled">Envoyer</button>
+        <button class="btn btn-outline-dark" @click.prevent="handleSubmit" :disabled="isButtonDisabled">Envoyer</button>
     </div>
 </div>
 </template>

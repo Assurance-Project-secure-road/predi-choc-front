@@ -1,16 +1,18 @@
 <template>
   <div class="container">
-    <FirstStep :step="step+1" @next="handleNext" v-if="step == 0" />
-    <SecondStep :step="step+1" @next="handleNext" v-else-if="step ==1" />
-    <ThirdStep :step="step+1" @next="handleNext" v-else-if="step == 2" />
-    <FourthStep :step="step+1" @next="handleNext" v-else-if="step == 3" />
-    <AskResult :step="step+1" :disabled="loading" @submit="handleSubmit" v-else-if="step == 4" />
+    <WelcomeStep @next="handleNext" v-if="step == 0" />
+    <FirstStep :step="step" @next="handleNext" v-else-if="step == 1" />
+    <SecondStep :step="step" @next="handleNext" v-else-if="step == 2" />
+    <ThirdStep :step="step" @next="handleNext" v-else-if="step == 3" />
+    <FourthStep :step="step" @next="handleNext" v-else-if="step == 4" />
+    <AskResult :step="step" :disabled="loading" @submit="handleSubmit" v-else-if="step == 5" />
     <Result :results="results" :sondage="sondage" v-if="results.length > 0" />
   </div>
 </template>
 
 <script setup>
 import { ref } from "vue"
+import WelcomeStep from "@/components/WelcomeStep.vue"
 import FirstStep from "@/components/FirstStep.vue"
 import SecondStep from "@/components/SecondStep.vue"
 import ThirdStep from "@/components/ThirdStep.vue"
@@ -24,7 +26,7 @@ const results = ref([])
 const loading = ref(false)
 
 const handleSubmit = () => {
-  if (step.value == 4) {
+  if (step.value == 5) {
     loading.value = true
     submit()
   }
