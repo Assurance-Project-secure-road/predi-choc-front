@@ -1,5 +1,5 @@
 <template>
-<div class="card">
+<div class="card mb-3">
     <div class="card-body">
         <h1 class="card-title">Bienvenue sur PrediChoc !</h1>
         <p>
