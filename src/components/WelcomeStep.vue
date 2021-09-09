@@ -1,18 +1,33 @@
 <template>
-<div class="card mb-3">
-    <div class="card-body">
-        <h1 class="card-title">Bienvenue sur PrediChoc !</h1>
-        <p>
-            Afin de pouvoir prédire la gravité et le type d'un accident dont vous seriez victime, nous allons avoir besoin que vous remplissiez un questionnaire assez court.<br>
-        </p>
-        <p class="text-end">
-            <router-link to="/about-ia" class="btn btn-outline-primary">En savoir plus</router-link>
-        </p>
-        <div class="text-center">
-            <button class="btn btn-success" @click.prevent="next">Commencer</button>
+    <div class="card mb-3">
+        <div class="card-body">
+            <h1 class="card-title">
+                Bienvenue sur PrediChoc !
+                <router-link to="/about-ia" class="about" alt="En savoir plus" title="En savoir plus">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor"
+                        class="bi bi-question-circle"
+                        viewBox="0 0 16 16"
+                    >
+                        <path
+                            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                        />
+                        <path
+                            d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"
+                        />
+                    </svg>
+                </router-link>
+            </h1>
+            <p>
+                Afin de pouvoir prédire la gravité et le type d'un accident dont vous seriez victime, nous allons avoir besoin que vous remplissiez un questionnaire assez court.
+                <br />
+            </p>
+            <div class="text-center">
+                <button class="btn btn-primary" @click.prevent="next">Commencer</button>
+            </div>
         </div>
     </div>
-</div>
 </template>
 
 <script setup>
@@ -22,3 +37,9 @@ const next = () => {
     emits("next", {})
 }
 </script>
+
+<style type="text/css">
+.about svg {
+    height: .8em;
+}
+</style>
