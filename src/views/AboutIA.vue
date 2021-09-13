@@ -32,13 +32,30 @@ préjudice (avis de la CADA – 2 janvier 2012).</p>
     <div class="bg-secondary text-white py-5">
         <div class="container">
             <h1 class>Variables retenues</h1>
-            <p></p>
+            <ul>
+                <li>Age : Age du nouveau client</li>
+                <li>Nb_voie_Route : Nombre total de voies de circulation</li>
+                <li>Vitesse_max_Route : La vitesse maximale pratiquée sur la route</li>
+                <li>Sexe_Usager : Homme ou Femme</li>
+                <li>Equipement_Secu_Usager : Equipement de sécurité utilisé</li>
+                <li>Departement_Acc : Département de l'accident</li>
+                <li>Categorie_Vehicule : Catégorie du véhicule lors de l'accident</li>
+                <li>Month : Mois de l'accident</li>
+                <li>Type_motorisation_Vehicule : Type de motorisation du véhicule impliqué dans l'accident</li>
+                <li>Categorie_Route : Catégorie de la route de l'accident</li>
+                <li>Circulation_Route : Régime de circulation de l'accident</li>
+                <li>Surface_Route : L'état de la surface de la route l'accident</li>
+                <li>Lumiere_Acc : Luminosité météorologique de l'accident</li>'
+                <li>Meteo_Acc : Climat lors de l'accident</li>
+                <li>Motif_Deplacer_Usager : Motif de déplacement lors de l'accident</li>
+            </ul>
         </div>
     </div>
     <div class="bg-primary text-white py-5">
         <div class="container">
             <h1 class>Modèle</h1>
-            <p></p>
+            <p>Choix de deux modèles de classification Random Forest afin de prédire le type de collision et la gravité des blessures engendré lors d'un accident.</p>
+            <p>On essaie ainsi de savoir, selon les habitudes d'un utilisateur s'il est possible qu'elles appartiennent à un groupe type d'accident et qu'elles seraient sa classification dans ce cas.</p>
         </div>
     </div>
 </template>
