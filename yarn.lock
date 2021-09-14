@@ -4099,6 +4099,11 @@ find-up@^4.0.0, find-up@^4.1.0:
     locate-path "^5.0.0"
     path-exists "^4.0.0"
 
+fireworks-js@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/fireworks-js/-/fireworks-js-1.2.1.tgz#de56895b6d6a6a6f8a260c9c5d29babdc9eadfce"
+  integrity sha512-SYyhk4A6nCycEHIqiyjpUGbKnT1VWqq/722ckeD5Fw5CeZBmTSJwZuBcD2t5tSLFqSu3GJeOXE3BSlUk5dXqNQ==
+
 flat-cache@^3.0.4:
   version "3.0.4"
   resolved "https://registry.npm.taobao.org/flat-cache/download/flat-cache-3.0.4.tgz#61b0338302b2fe9f957dcc32fc2a87f1c3048b11"

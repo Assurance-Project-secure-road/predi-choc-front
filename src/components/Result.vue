@@ -1,21 +1,46 @@
 <template>
-<div class="card shadow">
-    <div class="card-body">
-        <h1 class="card-title text-primary">Bravo !</h1>
-        <h3 class="text-primary">Vos résultats</h3>
-        <p>Selon les informations soumises, il est plus probable que vous soyez '<strong>{{ getGravite(getMostProbable.gravite[0][0]) }}</strong>' par un accident '<strong>{{ getType(getMostProbable.type[0][0]) }}</strong>'.</p>
+    <div ref="resultContainer">
+        <div class="card shadow">
+            <div class="card-body">
+                <h1 class="card-title text-primary">Bravo !</h1>
+                <h3 class="text-primary">Vos résultats</h3>
+                <p>
+                    Selon les informations soumises, il est plus probable que vous soyez '
+                    <strong>{{ getGravite(getMostProbable.gravite[0][0]) }}</strong>' par un accident '
+                    <strong>{{ getType(getMostProbable.type[0][0]) }}</strong>'.
+                </p>
+            </div>
+        </div>
     </div>
-</div>
 </template>
 
 <script setup>
-import { computed, defineProps, toRefs } from "vue"
+import { computed, defineProps, toRefs, ref, onMounted } from "vue"
+import { Fireworks } from "fireworks-js"
+
 const props = defineProps({
     results: Object,
     sondage: Object,
 })
 
-const {results} = toRefs(props)
+const { results } = toRefs(props)
+const resultContainer = ref(null)
+const fireworks = ref(null)
+
+const setFireworks = () => {
+    if (resultContainer.value !== null) {
+        fireworks.value = new Fireworks(resultContainer.value, {});
+    }
+}
+
+onMounted(setFireworks)
+
+const onResultsChanged = () => {
+    if (resultContainer.value !== null) {
+        fireworks.value.start()
+        setTimeout(() => { fireworks.value.stop() }, 10000)
+    }
+}
 
 const getMostProbable = computed(() => {
     let sumOfGrav = {}
@@ -36,8 +61,8 @@ const getMostProbable = computed(() => {
             }
         })
     }
-    const gravSorted = Object.entries(sumOfGrav).sort(([,a],[,b]) => b-a)
-    const gravType = Object.entries(sumOfType).sort(([,a],[,b]) => b-a)
+    const gravSorted = Object.entries(sumOfGrav).sort(([, a], [, b]) => b - a)
+    const gravType = Object.entries(sumOfType).sort(([, a], [, b]) => b - a)
     return { gravite: gravSorted, type: gravType }
 })
 
@@ -74,4 +99,6 @@ const getType = (type) => {
     }
     return ''
 }
+
+onMounted(onResultsChanged)
 </script>
