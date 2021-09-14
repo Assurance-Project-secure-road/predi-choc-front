@@ -37,7 +37,9 @@
       </div>
     </nav>
   </div>
-  <router-view />
+  <div class="main">
+    <router-view />
+  </div>
   <footer class="bg-light pt-5 pb-2">
     <div class="container">
       <div class="row">
@@ -82,5 +84,8 @@ footer {
   a {
     text-decoration: none;
   }
+}
+.main {
+  margin-top: 5em;
 }
 </style>
