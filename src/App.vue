@@ -1,6 +1,6 @@
 <template>
   <div id="nav" class="border-bottom mb-3 shadow">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
       <div class="container-md">
         <a class="navbar-brand" href="#">
           <img
